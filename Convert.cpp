@@ -1,8 +1,28 @@
-// Convert.cpp by XMC
+// MIT License
+//
+// Copyright (c) 2025 xmc0211
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 #include "Convert.h"
 
-// std::stringÓëstd::wstring»¥×ª£¨¸ü°²È«£©
+// std::stringä¸std::wstringäº’è½¬ï¼ˆæ›´å®‰å…¨ï¼‰
 std::wstring LPC2LPW(const std::string str) {
 	int size = MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, nullptr, 0);
 	if (size == 0) return L"";
@@ -11,7 +31,7 @@ std::wstring LPC2LPW(const std::string str) {
 	MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, buffer.data(), size);
 	buffer[size] = '\0';
 
-	return std::wstring(buffer.data(), size - 1); // ÅÅ³ı null ÖÕÖ¹·û
+	return std::wstring(buffer.data(), size - 1); // æ’é™¤ null ç»ˆæ­¢ç¬¦
 }
 std::string LPW2LPC(const std::wstring wstr) {
 	int size = WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), -1, nullptr, 0, nullptr, nullptr);
@@ -21,20 +41,20 @@ std::string LPW2LPC(const std::wstring wstr) {
 	WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), -1, buffer.data(), size, nullptr, nullptr);
 	buffer[size] = '\0';
 
-	return std::string(buffer.data(), size - 1); // ÅÅ³ı null ÖÕÖ¹·û
+	return std::string(buffer.data(), size - 1); // æ’é™¤ null ç»ˆæ­¢ç¬¦
 }
 
-// UCHAR*µÄstrlen
+// UCHAR*çš„strlen
 size_t ustrlen(const UCHAR* str) {
 	size_t length = 0;
-	while (*str != 0) { // ÒÔ0×÷ÎªÖÕÖ¹Ìõ¼ş
+	while (*str != 0) { // ä»¥0ä½œä¸ºç»ˆæ­¢æ¡ä»¶
 		++length;
 		++str;
 	}
 	return length;
 }
 
-// char*Óëunsigned char*»¥×ª
+// char*ä¸unsigned char*äº’è½¬
 void CH2UCH(const char* str, UCHAR* res, size_t sz) {
 	for (size_t i = 0; i < sz + 1; i++) {
 		res[i] = static_cast<unsigned char>(str[i]);
@@ -48,7 +68,7 @@ void UCH2CH(const UCHAR* str, char* res, size_t sz) {
 	return;
 }
 
-// ULÓëstd::string»¥×ª£¨È·±£ÔÚ·¶Î§ÄÚ£©
+// ULä¸std::stringäº’è½¬ï¼ˆç¡®ä¿åœ¨èŒƒå›´å†…ï¼‰
 std::string UL2STR(const ULONG res) {
 	if (res == 0) return "0";
 	std::string ans = "";
@@ -68,7 +88,7 @@ ULONG STR2UL(const std::string str) {
 	return ans;
 }
 
-// UCHAR*Óëstring»¥×ª
+// UCHAR*ä¸stringäº’è½¬
 void UCH2STR(const UCHAR* data, CHAR* res, size_t sz) {
 	for (size_t i = 0; i < sz; i++) {
 		snprintf(res + i * 2, 3, "%02x", data[i]);
