@@ -1,13 +1,33 @@
-// TaskDialogEx.cpp by XMC
+// MIT License
+//
+// Copyright (c) 2025 xmc0211
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-// * ¿ÉÒÔÍ¨¹ı#define NOUSING_NEW_COMMCTRL_PRAGMAÊ¹Í·ÎÄ¼ş
-// ²»Í¨¹ı#pragmaÊ¹ÓÃCommctrl 6.0.0.0£¨³öÏÖ¡°ÎŞ·¨¶¨Î»Ğò
-// Êı345¡±µÄÇé¿öÇÒ¸Ã±êÊ¶ÒÑ±»ÉùÃ÷Ê±¿ÉÒÔ³¢ÊÔÉ¾³ıÉùÃ÷£©
-// * ¿ÉÒÔÍ¨¹ı#define NO_HYPERLINK_AUTORUN½ûÖ¹Í·ÎÄ¼şÔÚµã
-// »÷³¬Á´½ÓÊ±²»×Ô¶¯Ö´ĞĞÃüÁî¡£
-// * Çë²»ÒªÔÚTaskDialogÔÚĞÂÏß³ÌÀïÔËĞĞÊ±ÔÚÖ÷Ïß³ÌÀïÏú»Ù
-// TaskDialogEx£¨°üº¬ÊÖ¶¯ÊÍ·Å£¬ÍË³öÊµÀıËùÔÚ×÷ÓÃÓòÈç
-// º¯Êı£¬if£¬forµÈ£©
+// * å¯ä»¥é€šè¿‡#define NOUSING_NEW_COMMCTRL_PRAGMAä½¿å¤´æ–‡ä»¶
+// ä¸é€šè¿‡#pragmaä½¿ç”¨Commctrl 6.0.0.0ï¼ˆå‡ºç°â€œæ— æ³•å®šä½åº
+// æ•°345â€çš„æƒ…å†µä¸”è¯¥æ ‡è¯†å·²è¢«å£°æ˜æ—¶å¯ä»¥å°è¯•åˆ é™¤å£°æ˜ï¼‰
+// * å¯ä»¥é€šè¿‡#define NO_HYPERLINK_AUTORUNç¦æ­¢å¤´æ–‡ä»¶åœ¨ç‚¹
+// å‡»è¶…é“¾æ¥æ—¶ä¸è‡ªåŠ¨æ‰§è¡Œå‘½ä»¤ã€‚
+// * è¯·ä¸è¦åœ¨TaskDialogåœ¨æ–°çº¿ç¨‹é‡Œè¿è¡Œæ—¶åœ¨ä¸»çº¿ç¨‹é‡Œé”€æ¯
+// TaskDialogExï¼ˆåŒ…å«æ‰‹åŠ¨é‡Šæ”¾ï¼Œé€€å‡ºå®ä¾‹æ‰€åœ¨ä½œç”¨åŸŸå¦‚
+// å‡½æ•°ï¼Œifï¼Œforç­‰ï¼‰
 
 #include "TaskDialogEx.h"
 
@@ -34,7 +54,7 @@ TASKDIALOGCBFUNC::~TASKDIALOGCBFUNC() {
 
 }
 
-// µ÷ÓÃÒÑÓĞµÄº¯Êı
+// è°ƒç”¨å·²æœ‰çš„å‡½æ•°
 void TASKDIALOGCBFUNC::Execute(HWND hWnd, LONG_PTR uiP1 /* = 0 */, LONG_PTR uiP2 /* = 0 */, LONG_PTR vArg /* = NULL */) {
 	if (type == -1) return;
 	LPVOID arg = reinterpret_cast <LPVOID> (vArg);
@@ -116,7 +136,7 @@ void TASKDIALOGEX::Update() {
 HRESULT CALLBACK TASKDIALOGEX::__cbFunc(HWND hWnd, UINT uiNoti, WPARAM wParam, LPARAM lParam, LONG_PTR lpArg) {
 	__CBFUNCARG* _cbf = reinterpret_cast <__CBFUNCARG*> (lpArg);
 	TASKDIALOGEX* _this = reinterpret_cast <TASKDIALOGEX*> (_cbf->lpClass);
-	// Ô¤ÖÃµÄ´¦Àí
+	// é¢„ç½®çš„å¤„ç†
 	switch (uiNoti) {
 		case TDN_CREATED: {
 			_this->tmp.hWnd = hWnd;
@@ -171,9 +191,9 @@ TASKDIALOGEX::TASKDIALOGEX(const TASKDIALOGEX& other) {
 	tmp = other.tmp;
 }
 TASKDIALOGEX::~TASKDIALOGEX() {
-	// ±ÜÃâÏß³ÌÔÚTASKDIALOGEXÏú»ÙÊ±¼ÌĞøÔËĞĞ¡£
-	// µ«»¹ÊÇ½¨ÒéÌáÇ°¹Ø±Õ´°¿Ú£¬ÒòÎª×Ô¶¯¹Ø±Õ»á
-	// Ó°ÏìÊÓ¾õĞ§¹û£¨¿¨¶Ù£©¡£
+	// é¿å…çº¿ç¨‹åœ¨TASKDIALOGEXé”€æ¯æ—¶ç»§ç»­è¿è¡Œã€‚
+	// ä½†è¿˜æ˜¯å»ºè®®æå‰å…³é—­çª—å£ï¼Œå› ä¸ºè‡ªåŠ¨å…³é—­ä¼š
+	// å½±å“è§†è§‰æ•ˆæœï¼ˆå¡é¡¿ï¼‰ã€‚
 	if (tmp.hThread != NULL &&
 	        WaitForSingleObject(tmp.hThread, __TD_TERMINATE_TIMEOUT) == WAIT_TIMEOUT) {
 		SendWndMessage(TDM_CLICK_BUTTON, IDOK);
@@ -187,81 +207,81 @@ TASKDIALOGCBFUNC TASKDIALOGEX::GetCurrentCBFunc(INT iIndx) {
 	return cbf[iIndx];
 }
 
-// ==============================ÔËĞĞÇ°º¯Êı==============================
-// ÉèÖÃÊôĞÔ£¨ÉèÖÃ»òÒÆ³ı¶à¸ö¿ÉÓÃ¡°|¡±Á¬½Ó£©
+// ==============================è¿è¡Œå‰å‡½æ•°==============================
+// è®¾ç½®å±æ€§ï¼ˆè®¾ç½®æˆ–ç§»é™¤å¤šä¸ªå¯ç”¨â€œ|â€è¿æ¥ï¼‰
 void TASKDIALOGEX::SetAttrib(INT iFlag, TASKDIALOGFLAGOPTION iOpt /* = TDF_ENABLE */ ) {
 	if (iOpt) tdc.dwFlags = __ADD(tdc.dwFlags, iFlag);
 	else tdc.dwFlags = __REMOVE(tdc.dwFlags, iFlag);
 }
-// ÉèÖÃ´°¿Ú¿í¶È
+// è®¾ç½®çª—å£å®½åº¦
 void TASKDIALOGEX::SetWidth(UINT uiWidth) {
 	tdc.cxWidth = uiWidth;
 }
-// ÉèÖÃ´°¿Ú±êÌâ
+// è®¾ç½®çª—å£æ ‡é¢˜
 void TASKDIALOGEX::SetWindowTitle(std::string lpcWindowTitle) {
 	tmp.WindowTitle = LPC2LPW(lpcWindowTitle);
 	return;
 }
-// ÉèÖÃÎÄ±¾ÕıÎÄ
+// è®¾ç½®æ–‡æœ¬æ­£æ–‡
 void TASKDIALOGEX::SetContent(std::string lpcContent) {
 	tmp.Content = LPC2LPW(lpcContent);
 	return;
 }
-// ÉèÖÃÎÄ±¾±êÌâ
+// è®¾ç½®æ–‡æœ¬æ ‡é¢˜
 void TASKDIALOGEX::SetMainInstruction(std::string lpcMainIntruction) {
 	tmp.MainInstruction = LPC2LPW(lpcMainIntruction);
 	return;
 }
-// ÉèÖÃÖ÷Í¼±ê£¨ÓÃÔ¤Éè£©
+// è®¾ç½®ä¸»å›¾æ ‡ï¼ˆç”¨é¢„è®¾ï¼‰
 void TASKDIALOGEX::SetMainIcon(TASKDIALOGMAINICON iIconID) {
 	tdc.dwFlags = __REMOVE(tdc.dwFlags, TDF_USE_HICON_MAIN);
 	if (tmp.hMainIcon != NULL) DestroyIcon(tmp.hMainIcon);
 	tdc.pszMainIcon = MAKEINTRESOURCEW(iIconID);
 	return;
 }
-// ÉèÖÃÖ÷Í¼±ê£¨×Ô¶¨Òå£¬HICON£©
+// è®¾ç½®ä¸»å›¾æ ‡ï¼ˆè‡ªå®šä¹‰ï¼ŒHICONï¼‰
 void TASKDIALOGEX::SetMainIcon(HICON hIcon) {
 	tdc.dwFlags |= TDF_USE_HICON_MAIN;
 	if (tmp.hMainIcon != NULL) DestroyIcon(tmp.hMainIcon);
 	tmp.hMainIcon = CopyIcon(hIcon);
 }
-// ÉèÖÃÖ÷Í¼±ê£¨×Ô¶¨Òå£¬Ö¸¶¨dllÃû³ÆºÍÍ¼±êË÷Òı£©
+// è®¾ç½®ä¸»å›¾æ ‡ï¼ˆè‡ªå®šä¹‰ï¼ŒæŒ‡å®šdllåç§°å’Œå›¾æ ‡ç´¢å¼•ï¼‰
 void TASKDIALOGEX::SetMainIcon(std::string lpcDllName, INT iIconIndx) {
 	HMODULE mod = LoadLibraryA(lpcDllName.c_str());
 	if (mod == NULL) return;
 	SetMainIcon(LoadIconA(mod, MAKEINTRESOURCEA(iIconIndx)));
 	FreeLibrary(mod);
 }
-// ÉèÖÃµ×²¿ÎÄ×ÖÕıÎÄ
+// è®¾ç½®åº•éƒ¨æ–‡å­—æ­£æ–‡
 void TASKDIALOGEX::SetFooter(std::string lpcFooter) {
 	tmp.Footer = LPC2LPW(lpcFooter);
 	return;
 }
-// ÉèÖÃµ×²¿ÎÄ×ÖÍ¼±ê£¨ÓÃÔ¤Éè£©
+// è®¾ç½®åº•éƒ¨æ–‡å­—å›¾æ ‡ï¼ˆç”¨é¢„è®¾ï¼‰
 void TASKDIALOGEX::SetFooterIcon(TASKDIALOGFOOTERICON iIconID) {
 	tdc.dwFlags = __REMOVE(tdc.dwFlags, TDF_USE_HICON_FOOTER);
 	if (tmp.hFooterIcon != NULL) DestroyIcon(tmp.hFooterIcon);
 	tdc.pszFooterIcon = MAKEINTRESOURCEW(iIconID);
 	return;
 }
-// ÉèÖÃµ×²¿ÎÄ×ÖÍ¼±ê£¨×Ô¶¨Òå£¬HICON£©
+// è®¾ç½®åº•éƒ¨æ–‡å­—å›¾æ ‡ï¼ˆè‡ªå®šä¹‰ï¼ŒHICONï¼‰
 void TASKDIALOGEX::SetFooterIcon(HICON hIcon) {
 	tdc.dwFlags |= TDF_USE_HICON_FOOTER;
 	if (tmp.hFooterIcon != NULL) DestroyIcon(tmp.hFooterIcon);
 	tmp.hFooterIcon = CopyIcon(hIcon);
 }
-// ÉèÖÃµ×²¿ÎÄ×ÖÍ¼±ê£¨×Ô¶¨Òå£¬Ö¸¶¨dllÃû³ÆºÍÍ¼±êË÷Òı£©
+// è®¾ç½®åº•éƒ¨æ–‡å­—å›¾æ ‡ï¼ˆè‡ªå®šä¹‰ï¼ŒæŒ‡å®šdllåç§°å’Œå›¾æ ‡ç´¢å¼•ï¼‰
 void TASKDIALOGEX::SetFooterIcon(std::string lpcDllName, INT iIconIndx) {
 	HMODULE mod = LoadLibraryA(lpcDllName.c_str());
 	if (mod == NULL) return;
 	SetFooterIcon(LoadIconA(mod, MAKEINTRESOURCEA(iIconIndx)));
 	FreeLibrary(mod);
 }
-// Ìí¼Ó°´Å¥£¨ÓÃÔ¤Éè£©
+// æ·»åŠ æŒ‰é’®ï¼ˆç”¨é¢„è®¾ï¼‰
 void TASKDIALOGEX::AddButton(TASKDIALOG_COMMON_BUTTON_FLAGS tcbfSet) {
 	tdc.dwCommonButtons |= tcbfSet;
 }
-// Ìí¼Ó°´Å¥£¨×Ô¶¨Òå£©
+// æ·»åŠ æŒ‰é’®ï¼ˆè‡ªå®šä¹‰ï¼‰
 void TASKDIALOGEX::AddButton(INT iButtonID, std::string lpcName, std::string lpcCont /* = "" */) {
 	if (tmp.tdbc >= __TD_MAX_BUTTON_NUM) return;
 	if (lpcCont != "") lpcName = (lpcName + (char)10 + lpcCont);
@@ -269,54 +289,54 @@ void TASKDIALOGEX::AddButton(INT iButtonID, std::string lpcName, std::string lpc
 	tmp.tdb[tmp.tdbc].nButtonID = iButtonID;
 	tmp.tdbc++;
 }
-// ÉèÖÃÄ¬ÈÏ°´Å¥
+// è®¾ç½®é»˜è®¤æŒ‰é’®
 void TASKDIALOGEX::SetDefaultButton(INT iButtonIndx) {
 	tdc.nDefaultRadioButton = iButtonIndx;
 }
-// Ìí¼Óµ¥Ñ¡°´Å¥
+// æ·»åŠ å•é€‰æŒ‰é’®
 void TASKDIALOGEX::AddRButton(INT iButtonID, std::string lpcName) {
 	if (tmp.tdrbc >= __TD_MAX_RBUTTON_NUM) return;
 	tmp.RButtonName[tmp.tdrbc] = LPC2LPW(lpcName);
 	tmp.tdrb[tmp.tdrbc].nButtonID = iButtonID;
 	tmp.tdrbc++;
 }
-// ÉèÖÃÄ¬ÈÏµ¥Ñ¡°´Å¥
+// è®¾ç½®é»˜è®¤å•é€‰æŒ‰é’®
 void TASKDIALOGEX::SetDefaultRButton(INT iButtonIndx) {
 	tdc.nDefaultRadioButton = iButtonIndx;
 }
-// ÉèÖÃ¸´Ñ¡¿òÕıÎÄ
+// è®¾ç½®å¤é€‰æ¡†æ­£æ–‡
 void TASKDIALOGEX::SetVeriText(std::string lpcVeriText) {
 	tmp.VeriText = LPC2LPW(lpcVeriText);
 	return;
 }
-// ÉèÖÃ¸ü¶àĞÅÏ¢ÕıÎÄ¡¢´ò¿ªÌáÊ¾Óï¡¢ÊÕÆğÌáÊ¾Óï
+// è®¾ç½®æ›´å¤šä¿¡æ¯æ­£æ–‡ã€æ‰“å¼€æç¤ºè¯­ã€æ”¶èµ·æç¤ºè¯­
 void TASKDIALOGEX::SetExpanded(std::string lpcText, std::string lpcOpenText, std::string lpcCloseText) {
 	tmp.ExpText = LPC2LPW(lpcText);
 	tmp.ExpOpenText = LPC2LPW(lpcOpenText);
 	tmp.ExpCloseText = LPC2LPW(lpcCloseText);
 	return;
 }
-// ÉèÖÃÏûÏ¢¶ÔÓ¦µÄ»Øµ÷º¯Êı
+// è®¾ç½®æ¶ˆæ¯å¯¹åº”çš„å›è°ƒå‡½æ•°
 void TASKDIALOGEX::SetCallbackFunc(UINT uiNoti, TASKDIALOGCBFUNC fCBFunc) {
 	if (uiNoti < 0 || uiNoti > 10) return;
 	if (fCBFunc.type != __TASKDIALOG_CBFUNC_CORRECTARGS[uiNoti]) return;
 	cbf[uiNoti] = fCBFunc;
 }
-// ÉèÖÃ´«µİ¸ø»Øµ÷º¯ÊıµÄ²ÎÊıÖ¸Õë
+// è®¾ç½®ä¼ é€’ç»™å›è°ƒå‡½æ•°çš„å‚æ•°æŒ‡é’ˆ
 void TASKDIALOGEX::SetCallbackArgs(LPVOID vArg) {
 	if (vArg == NULL) return;
 	tmp.vCBFArg.vUserArg = reinterpret_cast <LONG_PTR> (vArg);
 }
-// ÉèÖÃ´°¿Ú³õÊ¼×ø±ê
+// è®¾ç½®çª—å£åˆå§‹åæ ‡
 void TASKDIALOGEX::SetPoint(INT iX, INT iY) {
 	tmp.iX = iX;
 	tmp.iY = iY;
 }
-// ÉèÖÃ´°¿ÚÊÇ·ñÖÃ¶¥
+// è®¾ç½®çª—å£æ˜¯å¦ç½®é¡¶
 void TASKDIALOGEX::SetIsOnTop(BOOL bIsOnTop) {
 	tmp.bOnTop = bIsOnTop;
 }
-// ´´½¨£¨ÈôÒÑÓĞÔòÖ±½Ó·µ»Ø£©³¬Á´½Ó£¨cmdÃüÁîÇ°ÃæÒª¼Ócmd /c»òcmd /k£©
+// åˆ›å»ºï¼ˆè‹¥å·²æœ‰åˆ™ç›´æ¥è¿”å›ï¼‰è¶…é“¾æ¥ï¼ˆcmdå‘½ä»¤å‰é¢è¦åŠ cmd /cæˆ–cmd /kï¼‰
 std::string TASKDIALOGEX::CreateHLink(std::string lpId, std::string lpText, std::string lpCmd /* = "" */ ) {
 	std::string ret = "<a href=\"" + lpId + "\">" + lpText + "</a>";
 	if (tmp.Link.count(lpId)) {
@@ -329,16 +349,16 @@ std::string TASKDIALOGEX::CreateHLink(std::string lpId, std::string lpText, std:
 	return ret;
 }
 
-// ==============================ÔËĞĞÊ±º¯Êı==============================
-// ÏÔÊ¾¶Ô»°¿ò
+// ==============================è¿è¡Œæ—¶å‡½æ•°==============================
+// æ˜¾ç¤ºå¯¹è¯æ¡†
 LONG TASKDIALOGEX::Show() {
 	Update();
 	LONG res = TaskDialogIndirect(&tdc, &tmp.iButtonID, &tmp.iRadioIndex, &tmp.bVeriIsOK);
 	return res;
 }
-// ÏÔÊ¾¶Ô»°¿ò£¨ÔÚĞÂÏß³ÌÀï£©
+// æ˜¾ç¤ºå¯¹è¯æ¡†ï¼ˆåœ¨æ–°çº¿ç¨‹é‡Œï¼‰
 void TASKDIALOGEX::ShowInNewThread() {
-	//±ÜÃâÏß³Ì¶à¿ª
+	//é¿å…çº¿ç¨‹å¤šå¼€
 	if (tmp.hThread != NULL) return;
 	tmp.lThResult = 0;
 #ifndef DISABLE_NEW_THREAD
@@ -347,7 +367,7 @@ void TASKDIALOGEX::ShowInNewThread() {
 	__thFunc(tmp.lpThreadThis);
 #endif
 }
-// µÈ´ı´ò¿ªµÄÏß³Ì½áÊø²¢»ñÈ¡·µ»ØÖµ
+// ç­‰å¾…æ‰“å¼€çš„çº¿ç¨‹ç»“æŸå¹¶è·å–è¿”å›å€¼
 LONG TASKDIALOGEX::WaitThreadEnd() const {
 #ifndef DISABLE_NEW_THREAD
 	WaitForSingleObject(tmp.hThread, INFINITE);
@@ -356,36 +376,36 @@ LONG TASKDIALOGEX::WaitThreadEnd() const {
 	return 0;
 #endif
 }
-// »ñÈ¡´°¿Ú¾ä±ú£¨ÏÔÊ¾Ö®Ç°¶¼ÊÇNULL£©
+// è·å–çª—å£å¥æŸ„ï¼ˆæ˜¾ç¤ºä¹‹å‰éƒ½æ˜¯NULLï¼‰
 HWND TASKDIALOGEX::GetHWND() const {
 	return tmp.hWnd;
 }
-// ¸øÏÔÊ¾µÄ´°¿Ú·¢ËÍÏûÏ¢£¨½öÏŞĞÂÏß³ÌÖĞµÄ´°¿Ú£©
+// ç»™æ˜¾ç¤ºçš„çª—å£å‘é€æ¶ˆæ¯ï¼ˆä»…é™æ–°çº¿ç¨‹ä¸­çš„çª—å£ï¼‰
 void TASKDIALOGEX::SendWndMessage(UINT uiMsg, WPARAM wParam /* = 0 */, LPARAM lParam /* = 0*/ ) const {
 	if (tmp.hWnd == NULL) return;
 	SendMessageA(tmp.hWnd, uiMsg, wParam, lParam);
 }
-// ÅĞ¶Ï´°¿ÚÊÇ·ñ»¹ÔÚÔËĞĞ£¨½öÏŞĞÂÏß³ÌÖĞµÄ´°¿Ú£©
+// åˆ¤æ–­çª—å£æ˜¯å¦è¿˜åœ¨è¿è¡Œï¼ˆä»…é™æ–°çº¿ç¨‹ä¸­çš„çª—å£ï¼‰
 BOOL TASKDIALOGEX::IsActive() const {
 	DWORD ret;
 	GetExitCodeThread(tmp.hThread, &ret);
 	return ret == STILL_ACTIVE;
 }
-// ½«´°¿ÚÖÃÓÚ×î¶¥²ã
+// å°†çª—å£ç½®äºæœ€é¡¶å±‚
 void TASKDIALOGEX::TopMost() const {
 	SetWindowPos(GetHWND(), HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 }
 
-// ==============================ÔËĞĞºóº¯Êı==============================
-// »ñµÃ±»°´ÏÂµÄ°´Å¥µÄID
+// ==============================è¿è¡Œåå‡½æ•°==============================
+// è·å¾—è¢«æŒ‰ä¸‹çš„æŒ‰é’®çš„ID
 INT TASKDIALOGEX::GetButtonID() const {
 	return tmp.iButtonID;
 }
-// »ñµÃ±»Ñ¡ÖĞµÄµ¥Ñ¡°´Å¥µÄID
+// è·å¾—è¢«é€‰ä¸­çš„å•é€‰æŒ‰é’®çš„ID
 INT TASKDIALOGEX::GetRButtonID() const {
 	return tmp.iRadioIndex;
 }
-// »ñµÃ¸´Ñ¡¿òÑ¡ÖĞÏûÏ¢£¨Î´Ñ¡ÖĞ0£¬Ñ¡ÖĞ1£©
+// è·å¾—å¤é€‰æ¡†é€‰ä¸­æ¶ˆæ¯ï¼ˆæœªé€‰ä¸­0ï¼Œé€‰ä¸­1ï¼‰
 BOOL TASKDIALOGEX::GetVeriState() const {
 	return tmp.bVeriIsOK;
 }
