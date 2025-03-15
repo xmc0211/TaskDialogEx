@@ -45,8 +45,8 @@ Using this code, you can create a TaskDialog with the following effect:
 
 Can be used for the first parameter of AddAttrib()
 
-| Flag | Value | Description|
-| :--------------------: | :---------------------: | :---------------------: |
+| Flag | Value | Description |
+| :-----: | :-----: | :----- |
 | TDF_ENABLE_HYPERLINKS | 0x0001 | Allow hyperlinks to be used in TaskDialog.|
 | TDF_USE_HICON_MAIN | 0x0002 | Use the large icon (designated by the hMainIcon member) displayed in the main content area.|
 | TDF_USE_HICON_FOOTER | 0x0004 | Use the small icon (designated by the hFooterIcon member) displayed in the footer area.|
@@ -66,3 +66,24 @@ Can be used for the first parameter of AddAttrib()
 | TDF_NO_SET_FOREGROUND | 0x00010000 | When activating the dialog box, do not call SetForegroundWindow() (only valid on Windows 8 and later versions).|
 | TDF_SIZE_TO_CONTENT | 0x01000000 | Adjust the size of the dialog box based on its content (this is typically used to mimic the resizing behavior of a Message Box).|
 
+### TASKDIALOG_MESSAGES
+
+Can be used for the first parameter of SendWndMessage()
+
+| Message | Param count | Description | wParam | lParam |
+| :-----: | :-----: | :----- | :----- | :----- |
+| TDM_NAVIGATE_PAGE | 0 | Used to navigate to a specified page.| | |
+| TDM_CLICK_BUTTON | 1 | Simulate clicking a button.| Button ID | |
+| TDM_SET_MARQUEE_PROGRESS_BAR | 1 | Set whether the progress bar is in an active state. | 0 indicates inactive, non-zero indicates active | |
+| TDM_SET_PROGRESS_BAR_STATE | 1 | Update the status of the progress bar.| New state | |
+| TDM_SET_PROGRESS_BAR_RANGE | 1 | Set the scope of the progress bar.| | MAKELPARAM(nMinRange, nMaxRange) |
+| TDM_SET_PROGRESS_BAR_POS | 1 | Update the position of the progress bar.| New Location | |
+| TDM_SET_PROGRESS_BAR_MARQUEE | 2 | Control progress bar animation.| Stop at 0, start at non-zero | animation speed |
+| TDM_SET_ELEMENT_TEXT | 2 | Set element text.| element(TDE_*) | new text |
+| TDM_CLICK_RADIO_BUTTON | 1 | Simulate clicking the radio button.| Radio button ID | |
+| TDM_ENABLE_BUTTON | 2 | Enable/Disable button.| Button ID | Disabled for 0, enabled for non-zero |
+| TDM_ENABLE_RADIO_BUTTON | 2 | Enable/disable radio button.| Button ID | Disabled for 0, enabled for non-zero |
+| TDM_CLICK_VERIFICATION | 1 | Simulate clicking the verification checkbox.| 0 not selected, 1 selected | |
+| TDM_UPDATE_ELEMENT_TEXT | 2 | Update element text.| element(TDE_*) | new text |
+| TDM_SET_BUTTON_ELEVATION_REQUIRED_STATE | 2 | Do you need to elevate the permissions of the setting button.| Button ID | Not required for 0, required for non-zero |
+| TDM_UPDATE_ICON | 2 | Update icon.| icon element(TDIE_ICON_*) | New icon handle or path |
