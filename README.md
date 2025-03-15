@@ -1,7 +1,11 @@
 # TaskDialogEx
 Simple encapsulation of TaskDialog on Windows.
 
-TaskDialog is a dialog box encapsulated in commctrl.
+TaskDialog is a dialog box encapsulated in commctrl. It can be seen as a super enhanced version of Message Box, which can be applied in many software such as Windows registry editor.
+
+The character set dynamically adjusts according to the Unicode macro.
+
+**Rely on Convert.h**
 
 - - -
 ## Example
