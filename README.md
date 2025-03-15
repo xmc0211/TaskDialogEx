@@ -47,22 +47,22 @@ Can be used for the first parameter of AddAttrib()
 
 | Flag | Value | Description|
 | :--------------------: | :---------------------: | :---------------------: |
-| TDF_ENABLE_HYPERLINKS | 0x0001 | 允许在 TaskDialog 中使用超链接。|
-| TDF_USE_HICON_MAIN | 0x0002 | 使用在主要内容区域显示的大图标（hMainIcon 成员指定的图标）。|
-| TDF_USE_HICON_FOOTER | 0x0004 | 使用在页脚区域显示的小图标（hFooterIcon 成员指定的图标）。|
-| TDF_ALLOW_DIALOG_CANCELLATION | 0x0008 | 允许用户通过关闭按钮（如右上角的“X”按钮）或按 Esc 键来取消对话框。|
-| TDF_USE_COMMAND_LINKS | 0x0010 | 使用命令链接（带有图标的按钮）代替普通按钮。|
-| TDF_USE_COMMAND_LINKS_NO_ICON | 0x0020 | 使用没有图标的命令链接按钮。|
-| TDF_EXPAND_FOOTER_AREA | 0x0040 | 扩展页脚区域的高度，以便显示更多的信息或控件。|
-| TDF_EXPANDED_BY_DEFAULT | 0x0080 | 默认情况下扩展页脚区域（如果设置了 TDF_EXPAND_FOOTER_AREA）。|
-| TDF_VERIFICATION_FLAG_CHECKED | 0x0100 | 初始化时选中验证标志（复选框）。|
-| TDF_SHOW_PROGRESS_BAR | 0x0200 | 显示进度条。|
-| TDF_SHOW_MARQUEE_PROGRESS_BAR | 0x0400 | 显示不确定的（循环的）进度条（马拉松式进度条）。|
-| TDF_CALLBACK_TIMER | 0x0800 | 启用定时器回调，以便在对话框显示期间定期执行某些操作。|
-| TDF_POSITION_RELATIVE_TO_WINDOW | 0x1000 | 将对话框相对于指定窗口定位（使用 hwndParent 成员）。|
-| TDF_RTL_LAYOUT | 0x2000 | 使用从右到左的布局（适用于阿拉伯语、希伯来语等语言）。|
-| TDF_NO_DEFAULT_RADIO_BUTTON | 0x4000 | 不设置默认的单选按钮。|
-| TDF_CAN_BE_MINIMIZED | 0x8000 | 允许对话框被最小化。|
-| TDF_NO_SET_FOREGROUND | 0x00010000 | 当激活对话框时，不调用 SetForegroundWindow()（仅在 Windows 8 及更高版本上有效）。|
-| TDF_SIZE_TO_CONTENT | 0x01000000 | 根据内容调整对话框的大小（这通常用于模仿 MessageBox 的大小调整行为）。|
+| TDF_ENABLE_HYPERLINKS | 0x0001 | Allow hyperlinks to be used in TaskDialog.|
+| TDF_USE_HICON_MAIN | 0x0002 | Use the large icon (designated by the hMainIcon member) displayed in the main content area.|
+| TDF_USE_HICON_FOOTER | 0x0004 | Use the small icon (designated by the hFooterIcon member) displayed in the footer area.|
+| TDF_ALLOW_DIALOG_CANCELLATION | 0x0008 | Allow users to cancel the dialog box by pressing a close button (such as the "X" button in the upper right corner) or by pressing the Esc key.|
+| TDF_USE_COMMAND_LINKS | 0x0010 | Use command links (buttons with icons) instead of regular buttons.|
+| TDF_USE_COMMAND_LINKS_NO_ICON | 0x0020 | Use command link buttons without icons.|
+| TDF_EXPAND_FOOTER_AREA | 0x0040 | Expand the height of the footer area to display more information or controls.|
+| TDF_EXPANDED_BY_DEFAULT | 0x0080 | By default, the footer area is expanded (if TDF_EXPAND-FOOTER Area is set).|
+| TDF_VERIFICATION_FLAG_CHECKED | 0x0100 | Select the validation flag (checkbox) during initialization.|
+| TDF_SHOW_PROGRESS_BAR | 0x0200 | Display progress bar.|
+| TDF_SHOW_MARQUEE_PROGRESS_BAR | 0x0400 | Display an uncertain (looping) progress bar (marathon style progress bar).|
+| TDF_CALLBACK_TIMER | 0x0800 | Enable timer callbacks to perform certain operations periodically during the display of the dialog box.|
+| TDF_POSITION_RELATIVE_TO_WINDOW | 0x1000 | Position the dialog box relative to the specified window using the hwndParent member.|
+| TDF_RTL_LAYOUT | 0x2000 | Use a right to left layout (applicable to languages such as Arabic and Hebrew).|
+| TDF_NO_DEFAULT_RADIO_BUTTON | 0x4000 | Do not set default radio buttons.|
+| TDF_CAN_BE_MINIMIZED | 0x8000 | Allow the dialog box to be minimized.|
+| TDF_NO_SET_FOREGROUND | 0x00010000 | When activating the dialog box, do not call SetForegroundWindow() (only valid on Windows 8 and later versions).|
+| TDF_SIZE_TO_CONTENT | 0x01000000 | Adjust the size of the dialog box based on its content (this is typically used to mimic the resizing behavior of a Message Box).|
 
