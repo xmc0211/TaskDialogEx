@@ -105,3 +105,37 @@ Can be used for the first parameter of AKS allbackFunc()
 | TDN_VERIFICATION_CLICKED | 1 | Sent when the user clicks the verify checkbox in the dialog box.| The status of the checkbox (1 indicates selected, 0 indicates unselected) | |
 | TDN_HELP | 0 | Send when the user requests help (such as clicking the help button or pressing the F1 key).| | |
 | TDN_EXPANDO_BUTTON_CLICKED | 1 | Sent when the user clicks the expand/collapse button in the dialog box.| A value of 0 indicates that the dialog box is now in a folded state, while a value of non-zero indicates that the dialog box is now in an unfolded state | |
+
+### Pre set button ID
+
+Used to check the return value of GetButtonID().
+
+| Button ID | Value |
+| :-----: | :-----: |
+| IDOK | 1 |
+| IDCANCEL | 2 |
+| IDABORT | 3 |
+| IDRETRY | 4 |
+| IDIGNORE | 5
+| IDYES | 6 |
+| IDNO | 7 |
+| IDCLOSE | 8 |
+| IDHELP | 9 |
+| IDTRYAGAIN | 10 |
+| IDCONTINUE | 11 |
+| IDTIMEOUT | 12 |
+
+### Pre configured button options
+
+The first parameter used for AddButton() (using preset version)
+
+| Button ID | Value |
+| :-----: | :-----: |
+| TDCBF_OK_BUTTON | 0x01 |
+| TDCBF_YES_BUTTON | 0x02 |
+| TDCBF_NO_BUTTON | 0x04 |
+| TDCBF_CANCEL_BUTTON | 0x08 |
+| TDCBF_RETRY_BUTTON | 0x10 |
+| TDCBF_CLOSE_BUTTON | 0x20 |
+
+- - -
