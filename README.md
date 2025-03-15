@@ -5,7 +5,7 @@ TaskDialog is a dialog box encapsulated in commctrl. It can be seen as a super e
 
 The character set dynamically adjusts according to the Unicode macro.
 
-**Rely on Convert.h**
+**Rely on Convert.h** [https://github.com/xmc0211/Convert/](https://github.com/xmc0211/Convert/)
 
 - - -
 ## Example
