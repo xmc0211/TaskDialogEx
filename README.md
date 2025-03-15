@@ -87,3 +87,21 @@ Can be used for the first parameter of SendWndMessage()
 | TDM_UPDATE_ELEMENT_TEXT | 2 | Update element text.| element(TDE_*) | new text |
 | TDM_SET_BUTTON_ELEVATION_REQUIRED_STATE | 2 | Do you need to elevate the permissions of the setting button.| Button ID | Not required for 0, required for non-zero |
 | TDM_UPDATE_ICON | 2 | Update icon.| icon element(TDIE_ICON_*) | New icon handle or path |
+
+### TASKDIALOG_NOTIFICATIONS
+
+Can be used for the first parameter of AKS allbackFunc()
+
+| Notification | Param count | Description | wParam | lParam |
+| :-----: | :-----: | :----- | :----- | :----- |
+| TDN_CREATED | 0 | Send when the task dialog box is created.| | |
+| TDN_NAVIGATED | 0 | Sent when the user navigates to different pages or tags in the dialog box.| | |
+| TDN_BUTTON_CLICKED | 1 | Send when the user clicks the button in the dialog box.| Button ID | |
+| TDN_HYPERLINK_CLICKED | 2 | Sent when the user clicks on the hyperlink in the dialog box.| Always 0 | URL pointing to the clicked hyperlink (LPCWTR type) |
+| TDN_TIMER | 1 | Timer event, used to notify the dialog box of the time it already exists.| The number of milliseconds since the creation of the dialog box or timer reset | |
+| TDN_DESTROYED | 0 | Send when the task dialog box is destroyed.| | |
+| TDN_RADIO_BUTTON_CLICKED | 1 | Sent when the user selects the radio button in the dialog box.| Radio button ID | |
+| TDN_DIALOG_CONSTRUCTED | 0 | Send when the dialog box is fully built and ready to display.| | |
+| TDN_VERIFICATION_CLICKED | 1 | Sent when the user clicks the verify checkbox in the dialog box.| The status of the checkbox (1 indicates selected, 0 indicates unselected) | |
+| TDN_HELP | 0 | Send when the user requests help (such as clicking the help button or pressing the F1 key).| | |
+| TDN_EXPANDO_BUTTON_CLICKED | 1 | Sent when the user clicks the expand/collapse button in the dialog box.| A value of 0 indicates that the dialog box is now in a folded state, while a value of non-zero indicates that the dialog box is now in an unfolded state | |
