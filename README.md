@@ -51,9 +51,9 @@ Can be used for the first parameter of AddAttrib()
 
 | Flag | Value | Description |
 | :-----: | :-----: | :----- |
-| TDF_ENABLE_HYPERLINKS | 0x0001 | Allow hyperlinks to be used in TaskDialog.|
-| TDF_USE_HICON_MAIN | 0x0002 | Use the large icon (designated by the hMainIcon member) displayed in the main content area.|
-| TDF_USE_HICON_FOOTER | 0x0004 | Use the small icon (designated by the hFooterIcon member) displayed in the footer area.|
+| TDF_ENABLE_HYPERLINKS | 0x0001 | [AUTO] Allow hyperlinks to be used in TaskDialog.|
+| TDF_USE_HICON_MAIN | 0x0002 | [AUTO] Use the large icon (designated by the hMainIcon member) displayed in the main content area.|
+| TDF_USE_HICON_FOOTER | 0x0004 | [AUTO] Use the small icon (designated by the hFooterIcon member) displayed in the footer area.|
 | TDF_ALLOW_DIALOG_CANCELLATION | 0x0008 | Allow users to cancel the dialog box by pressing a close button (such as the "X" button in the upper right corner) or by pressing the Esc key.|
 | TDF_USE_COMMAND_LINKS | 0x0010 | Use command links (buttons with icons) instead of regular buttons.|
 | TDF_USE_COMMAND_LINKS_NO_ICON | 0x0020 | Use command link buttons without icons.|
@@ -95,7 +95,9 @@ Can be used for the first parameter of SendWndMessage()
 ### TASKDIALOG ICONS
 
 Can be used for the first parameter of SetMainIcon() or SetFooterIcon()
+
 **Main Icon**
+
 | Icon Name | Value | Picture |
 | :-----: | :-----: | :-----: |
 | TDMI_WARNING | -1 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_WARNING.png?raw=true) |
@@ -107,6 +109,17 @@ Can be used for the first parameter of SetMainIcon() or SetFooterIcon()
 | TDMI_SHIELDERROR_RED | -7 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELDERROR_RED.png?raw=true) |
 | TDMI_SHIELDSUCCESS_GREEN | -8 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELDSUCCESS_GREEN.png?raw=true) |
 | TDMI_SHIELD_GREY | -9 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELD_GREY.png?raw=true) |
+
+**Footer Icon**
+| Icon Name | Value | Picture |
+| :-----: | :-----: | :-----: |
+| TDFI_WARNING | -1 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDFI_WARNING.png?raw=true) |
+| TDFI_ERROR | -2 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDFI_ERROR.png?raw=true) |
+| TDFI_INFORMATION | -3 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDFI_INFORMATION.png?raw=true) |
+| TDFI_SHIELD | -4 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDFI_SHIELD.png?raw=true) |
+| TDFI_SHIELDWARNING | -6 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDFI_SHIELDWARNING.png?raw=true) |
+| TDFI_SHIELDERROR | -7 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDFI_SHIELDERROR.png?raw=true) |
+| TDFI_SHIELDSUCCESS | -8 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDFI_SHIELDSUCCESS.png?raw=true) |
 
 ### TASKDIALOG NOTIFICATIONS
 
