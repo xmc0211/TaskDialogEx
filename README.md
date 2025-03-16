@@ -45,7 +45,7 @@ Using this code, you can create a TaskDialog with the following effect:
 - - -
 ## Explanation of TaskDialogEx enumerations
 
-### TASKDIALOG_FLAGS
+### TASKDIALOG FLAGS
 
 Can be used for the first parameter of AddAttrib()
 
@@ -70,7 +70,7 @@ Can be used for the first parameter of AddAttrib()
 | TDF_NO_SET_FOREGROUND | 0x00010000 | When activating the dialog box, do not call SetForegroundWindow() (only valid on Windows 8 and later versions).|
 | TDF_SIZE_TO_CONTENT | 0x01000000 | Adjust the size of the dialog box based on its content (this is typically used to mimic the resizing behavior of a Message Box).|
 
-### TASKDIALOG_MESSAGES
+### TASKDIALOG MESSAGES
 
 Can be used for the first parameter of SendWndMessage()
 
@@ -92,9 +92,25 @@ Can be used for the first parameter of SendWndMessage()
 | TDM_SET_BUTTON_ELEVATION_REQUIRED_STATE | 2 | Do you need to elevate the permissions of the setting button.| Button ID | Not required for 0, required for non-zero |
 | TDM_UPDATE_ICON | 2 | Update icon.| icon element(TDIE_ICON_*) | New icon handle or path |
 
-### TASKDIALOG_NOTIFICATIONS
+### TASKDIALOG ICONS
 
-Can be used for the first parameter of AKS allbackFunc()
+Can be used for the first parameter of SetMainIcon() or SetFooterIcon()
+**Main Icon**
+| Icon Name | Value | Picture |
+| :-----: | :-----: | :-----: |
+| TDMI_WARNING | -1 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_WARNING.png?raw=true) |
+| TDMI_ERROR | -2 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_ERROR.png?raw=true) |
+| TDMI_INFORMATION | -3 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_INFORMATION.png?raw=true) |
+| TDMI_SHIELD | -4 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELD.png?raw=true) |
+| TDMI_SHIELD_BLUE | -5 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELD_BLUE.png?raw=true) |
+| TDMI_SHIELDWARNING_YELLOW | -6 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELDWARNING_YELLOW.png?raw=true) |
+| TDMI_SHIELDERROR_RED | -7 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELDERROR_RED.png?raw=true) |
+| TDMI_SHIELDSUCCESS_GREEN | -8 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELDSUCCESS_GREEN.png?raw=true) |
+| TDMI_SHIELD_GREY | -9 | ![Picture](https://github.com/xmc0211/TaskDialogEx/blob/main/Assets/TDMI_SHIELD_GREY.png?raw=true) |
+
+### TASKDIALOG NOTIFICATIONS
+
+Can be used for the first parameter of SetCallbackFunc()
 
 | Notification | Param count | Description | wParam | lParam |
 | :-----: | :-----: | :----- | :----- | :----- |
