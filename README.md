@@ -130,7 +130,7 @@ Can be used for the first parameter of SetCallbackFunc()
 | TDN_CREATED | 0 | Send when the task dialog box is created.| | |
 | TDN_NAVIGATED | 0 | Sent when the user navigates to different pages or tags in the dialog box.| | |
 | TDN_BUTTON_CLICKED | 1 | Send when the user clicks the button in the dialog box.| Button ID | |
-| TDN_HYPERLINK_CLICKED | 2 | Sent when the user clicks on the hyperlink in the dialog box.| Always 0 | URL pointing to the clicked hyperlink (LPCWTR type) |
+| TDN_HYPERLINK_CLICKED | 2 | Sent when the user clicks on the hyperlink in the dialog box.| Always 0 | URL pointing to the clicked hyperlink (LPCWSTR type) |
 | TDN_TIMER | 1 | Timer event, used to notify the dialog box of the time it already exists.| The number of milliseconds since the creation of the dialog box or timer reset | |
 | TDN_DESTROYED | 0 | Send when the task dialog box is destroyed.| | |
 | TDN_RADIO_BUTTON_CLICKED | 1 | Sent when the user selects the radio button in the dialog box.| Radio button ID | |
